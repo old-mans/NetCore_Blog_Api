@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NetCoreDBContex.Extend;
 
 namespace NetCore_Blog_Api.Controllers
 {
@@ -17,10 +18,11 @@ namespace NetCore_Blog_Api.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly IBlogDBContextFactory _blogDBContextFactory;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IBlogDBContextFactory blogDBContextFactory)
         {
             _logger = logger;
+            _blogDBContextFactory = blogDBContextFactory;
         }
 
         [HttpGet]
