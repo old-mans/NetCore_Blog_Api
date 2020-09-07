@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NetCoreDBContex;
 using NetCoreDBContex.Extend;
 
 namespace NetCore_Blog_Api
@@ -27,12 +28,16 @@ namespace NetCore_Blog_Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            BlogDBContext blogDBContext = new BlogDBContext();
+            blogDBContext.Database.EnsureCreated();
+
+
             services.AddSwaggerGen(m => m.SwaggerDoc("v1", new OpenApiInfo
             {
                 Title = "swagger",
                 Version = "v1"
             }));
-            services.AddScoped<IBlogDBContextFactory, BlogDBContextFactory>();
             services.AddScoped<IDBHelper, DBHelper>();
             services.AddControllers();
         }
