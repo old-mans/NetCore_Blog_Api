@@ -20,6 +20,7 @@ namespace NetCoreDBContex.Models
         public string UPwd { get; set; }//密码
         public string NickName { get; set; }//昵称
         public string Avatar { get; set; }//头像
+        public string Description { get; set; }//描述（简介）
 
     }
 }
