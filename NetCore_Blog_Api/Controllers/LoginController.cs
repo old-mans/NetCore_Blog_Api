@@ -20,8 +20,6 @@ namespace NetCore_Blog_Api.Controllers
         public LoginController( IDBHelper dBHelper)
         {
             _dBHelper = dBHelper;
-            BlogDBContext blogDBContext = new BlogDBContext();
-            blogDBContext.Database.EnsureCreated();
         }
         [HttpPost]
         public int Login(string Uname, string Upwd)

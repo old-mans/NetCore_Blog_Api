@@ -18,7 +18,7 @@ namespace NetCoreDBContex
         /// <param name="optionsBuilder"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(ConDB);
+            var context = optionsBuilder.UseMySQL(ConDB);
             //context.Database.EnsureCreated();//针对当前访问的上下文对象，如果数据库中存在该表，则不做修改；否则的话进行创建
         }
         #endregion
@@ -32,24 +32,29 @@ namespace NetCoreDBContex
         public DbSet<UserInfo> users { get; set; }
         public DbSet<UserInCharacter> userincharacters { get; set; }
         public DbSet<Character> characters { get; set; }
+        public DbSet<CharacterInMenu> characterinmenu { get; set; }
 
         #endregion
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            ///初始化数据
-            modelBuilder.Entity<UserInfo>().HasData(new List<UserInfo>()
-            {
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    ///初始化数据
+        //    modelBuilder.Entity<UserInfo>().HasData(new List<UserInfo>()
+        //    {
 
-            });
-            modelBuilder.Entity<UserInCharacter>().HasData(new List<UserInCharacter>()
-            {
+        //    });
+        //    modelBuilder.Entity<UserInCharacter>().HasData(new List<UserInCharacter>()
+        //    {
 
-            });
-            modelBuilder.Entity<Character>().HasData(new List<Character>()
-            {
+        //    });
+        //    modelBuilder.Entity<Character>().HasData(new List<Character>()
+        //    {
 
-            });
-        }
+        //    });
+        //    modelBuilder.Entity<CharacterInMenu>().HasData(new List<CharacterInMenu>()
+        //    {
+
+        //    });
+        //}
     }
 }
