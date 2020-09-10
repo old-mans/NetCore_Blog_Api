@@ -41,7 +41,7 @@ namespace NetCore_Blog_Api
 
             ////注册是否启动数据库创建
             //services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
-
+            services.AddScoped<IJsonHelper, JsonHelper>();
             services.AddScoped<IDBHelper, DBHelper>();
             services.AddControllers();
         }
