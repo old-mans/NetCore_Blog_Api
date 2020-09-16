@@ -33,6 +33,7 @@ namespace NetCoreDBContex
         public DbSet<UserInCharacter> userincharacters { get; set; }
         public DbSet<Character> characters { get; set; }
         public DbSet<CharacterInMenu> characterinmenu { get; set; }
+        public DbSet<MenuInfo> menus { get; set; }
 
         #endregion
 

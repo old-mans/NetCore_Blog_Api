@@ -20,7 +20,9 @@ namespace NetCore_Blog_Api
             using (var scope = host.Services.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<BlogDBContext>();
-                db.Database.Migrate();
+                //db.Database.EnsureCreated();
+                BlogDBContext blogDBContext = new BlogDBContext();
+                blogDBContext.Database.EnsureCreated();
             }
             host.Run();
         }
